@@ -10,9 +10,9 @@ function App() {
     <>
       <Box p={6} backgroundColor="gray.100">
         <Heading>Calculate the FizzBuzz</Heading>
-        <Text mt={2} p={2}>
-          Its Fizz, Buzz, FizzBuzz or maybe Invalid, check here!
-        </Text>
+        <Heading as="h5" size="sm" mt={6}>
+          FizzBuzz: Decoding Your Digits, One Fizz and Buzz at a Time.
+        </Heading>
       </Box>
       <InputComponent setDataSet={setDataSet} />
       <Divider />

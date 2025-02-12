@@ -20,12 +20,9 @@ export const InputComponent: React.FC<Props> = ({ setDataSet }) => {
   const captureInputText = (e: React.ChangeEvent<HTMLInputElement>) => {
     const pattern =
       "^(?:\\s*(?:\\d+|[A-Za-z]+)\\s*)(?:,\\s*(?:\\d+|[A-Za-z]+)\\s*)*$";
-    // Create a RegExp object from the pattern
     const regex = new RegExp(pattern);
-    // Test the input value against the regex
     const isValid = regex.test(e.target.value);
 
-    // Update state based on validity
     setValid(isValid);
     if (isValid) {
       setInputText(e.target.value);
@@ -48,7 +45,6 @@ export const InputComponent: React.FC<Props> = ({ setDataSet }) => {
           return num;
         }
       }
-      // Otherwise, return the item as is.
       return item;
     });
     // console.log(result);

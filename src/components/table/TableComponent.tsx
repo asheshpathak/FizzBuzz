@@ -14,6 +14,9 @@ import {
   Box,
   Kbd,
   Image,
+  Code,
+  Divider,
+  Center,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import graphic from "../../assets/3047124.jpg";
@@ -70,15 +73,47 @@ export const TableComponent: React.FC<Props> = ({
   if (data.length === 0)
     return (
       <>
-        <Wrap justify="center" p={6}>
-          <Box w="500px" p={6} border="1px solid" alignItems="center">
-            <Wrap justify="center" p={2}>
-              <Heading as="h5" size="sm">
-                There's Nothing here! start calculating.
+        <Wrap justify="center" align="center" p={6}>
+          <WrapItem>
+            <Box w="500px" p={6} alignItems="center">
+              <Wrap justify="center" p={2}>
+                <Heading as="h5" size="sm">
+                  There's Nothing here! start calculating.
+                </Heading>
+              </Wrap>
+              <Image src={graphic} />
+            </Box>
+          </WrapItem>
+          <Center height="50px">
+            <Divider orientation="vertical" height="300px" />
+          </Center>
+          <WrapItem>
+            <Box w="500px" p={6} alignItems="center">
+              <Heading as="h5" size="sm" pt={6} pb={6}>
+                How its done?
               </Heading>
-            </Wrap>
-            <Image src={graphic} />
-          </Box>
+              <Kbd>pseudocode:</Kbd>
+              <Code mt={2} mb={2}>
+                1. If the value is both divisible by 3 and 5, the result is
+                FizzBuzz
+              </Code>
+              <Code mt={2} mb={2}>
+                2. If the value is just divisible by 3 but not 5, the result is
+                Fizz
+              </Code>
+              <Code mt={2} mb={2}>
+                3. If the value is just divisible by 5 but not 3, the result is
+                Buzz
+              </Code>
+              <Code mt={2} mb={2}>
+                4. If the value is not divisible by either 3 and 5, the result
+                is : Divided "number" by 3 , Divided "number" by 5
+              </Code>
+              <Kbd>pass the comma seperated values in the input above.</Kbd>
+              <br></br>
+              <Kbd>example : 1,2,3,a,b,15,,30</Kbd>
+            </Box>
+          </WrapItem>
         </Wrap>
       </>
     );
