@@ -57,7 +57,7 @@ export const InputComponent: React.FC<Props> = ({ setDataSet }) => {
         <WrapItem>
           <FormControl>
             <Input
-              width="400px"
+              width="500px"
               onChange={captureInputText}
               isInvalid={!valid}
             />
