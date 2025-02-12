@@ -143,7 +143,10 @@ export const TableComponent: React.FC<Props> = ({
             style={{ display: "flex", justifyContent: "space-between" }}
           >
             <Table variant="striped">
-              <TableCaption>The above are the results</TableCaption>
+              <TableCaption>
+                The above are results calculated for each element of the array
+                passed to the input
+              </TableCaption>
               <Thead>
                 <Tr>
                   <Th>Input</Th>
