@@ -111,7 +111,7 @@ export const TableComponent: React.FC<Props> = ({
               </Code>
               <Kbd>pass the comma seperated values in the input above.</Kbd>
               <br></br>
-              <Kbd>example : 1,2,3,a,b,15,,30</Kbd>
+              <Kbd>example : 1,2,3,a,b,15,xyz,30</Kbd>
             </Box>
           </WrapItem>
         </Wrap>
