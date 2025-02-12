@@ -1,4 +1,4 @@
-import { Divider, Heading, Text, Box } from "@chakra-ui/react";
+import { Divider, Heading, Box } from "@chakra-ui/react";
 import "./App.css";
 import { InputComponent } from "./components/input/InputComponent";
 import { TableComponent } from "./components/table/TableComponent";
