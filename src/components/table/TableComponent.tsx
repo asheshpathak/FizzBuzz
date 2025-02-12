@@ -1,0 +1,140 @@
+import {
+  Heading,
+  TableContainer,
+  Table,
+  TableCaption,
+  Thead,
+  Tr,
+  Th,
+  Tbody,
+  Td,
+  Button,
+  Wrap,
+  WrapItem,
+  Box,
+  Kbd,
+  Image,
+} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import graphic from "../../assets/3047124.jpg";
+
+interface Props {
+  data: (string | number)[];
+  clearOnRecalculate: React.Dispatch<React.SetStateAction<(string | number)[]>>;
+}
+
+interface Data {
+  input: string;
+  result: string;
+}
+
+export const TableComponent: React.FC<Props> = ({
+  data,
+  clearOnRecalculate,
+}) => {
+  const [dataSet, setDataSet] = useState<Data[]>([]);
+
+  const calculateFizzBuzz = () => {
+    // Create a new array to accumulate your results
+    const newData: Data[] = [];
+
+    data.forEach((element: string | number) => {
+      if (typeof element === "string") {
+        newData.push({ input: "<empty>", result: "Invalid Item" });
+      } else if (element % 3 === 0 && element % 5 === 0) {
+        newData.push({ input: `${element}`, result: "FizzBuzz" });
+      } else if (element % 3 === 0 && element % 5 !== 0) {
+        newData.push({ input: `${element}`, result: "Fizz" });
+      } else if (element % 5 === 0 && element % 3 !== 0) {
+        newData.push({ input: `${element}`, result: "Buzz" });
+      } else {
+        newData.push({
+          input: `${element}`,
+          result: `Divided ${element} by 3 \nDivided ${element} by 5`,
+        });
+      }
+    });
+
+    // Now update the state once
+    setDataSet(newData);
+    console.log(newData); // This will log the complete new data set
+  };
+
+  const clearDataForRecalculation = () => {
+    clearOnRecalculate([]);
+  };
+
+  useEffect(() => {
+    calculateFizzBuzz();
+  }, [data]);
+  if (data.length === 0)
+    return (
+      <>
+        <Wrap justify="center" p={6}>
+          <Box w="500px" p={6} border="1px solid" alignItems="center">
+            <Wrap justify="center" p={2}>
+              <Heading as="h5" size="sm">
+                There's Nothing here! start calculating.
+              </Heading>
+            </Wrap>
+            <Image src={graphic} />
+          </Box>
+        </Wrap>
+      </>
+    );
+  return (
+    <>
+      <Box p={6}>
+        <Wrap justify="space-between">
+          <WrapItem>
+            <Heading size="lg" as="h3">
+              Results
+            </Heading>
+          </WrapItem>
+          <WrapItem>
+            <Button
+              variant="outline"
+              colorScheme="teal"
+              onClick={clearDataForRecalculation}
+            >
+              Recalculate
+            </Button>
+          </WrapItem>
+        </Wrap>
+        <Box display="flex" justifyContent="center">
+          <TableContainer
+            w="50%"
+            border="1px solid black"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <Table variant="striped">
+              <TableCaption>The above are the results</TableCaption>
+              <Thead>
+                <Tr>
+                  <Th>Input</Th>
+                  <Th>Result</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {dataSet.map((item) => {
+                  return (
+                    <>
+                      <Tr>
+                        <Td>
+                          <Kbd>{item.input}</Kbd>
+                        </Td>
+                        <Td style={{ whiteSpace: "pre-line" }}>
+                          {item.result}
+                        </Td>
+                      </Tr>
+                    </>
+                  );
+                })}
+              </Tbody>
+            </Table>
+          </TableContainer>
+        </Box>
+      </Box>
+    </>
+  );
+};
